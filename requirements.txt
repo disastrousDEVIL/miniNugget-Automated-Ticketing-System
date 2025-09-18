@@ -1,0 +1,18 @@
+# Backend framework
+fastapi==0.111.0
+uvicorn==0.30.1
+
+# Database ORM (SQLite)
+peewee==3.17.6
+
+# LLM + OpenAI
+langchain==0.2.7
+langchain-openai==0.1.7
+openai==1.40.3
+
+# JSON parsing (faster than stdlib, optional but useful)
+orjson==3.10.7
+
+# Embeddings + Semantic search (needed for FAISS step later)
+sentence-transformers==2.7.0
+faiss-cpu==1.8.0
