@@ -60,8 +60,33 @@ def classify_ticket(problem_text:str)->dict:
         {
             "complaint": "The food was not good",
             "output": '{{"type": "order_quality_issue", "confidence": 0.9, "extracted_items": []}}'
+        },
+        {
+            "complaint": "The coke was warm and the fries were soggy",
+            "output": '{{"type": "order_quality_issue", "confidence": 0.6, "extracted_items": ["coke", "fries"]}}'
+        },
+        {
+            "complaint": "I think something was missing but I’m not sure",
+            "output": '{{"type": "items_missing", "confidence": 0.4, "extracted_items": []}}'
+        },
+        {
+            "complaint": "The delivery was kind of slow but maybe due to traffic",
+            "output": '{{"type": "order_delayed", "confidence": 0.5, "extracted_items": []}}'
+        },
+        {
+            "complaint": "The guy seemed rude, but maybe he was just in a hurry",
+            "output": '{{"type": "agent_rude", "confidence": 0.45, "extracted_items": []}}'
+        },
+        {
+            "complaint": "I didn’t like the taste of the burger but maybe it’s just me",
+            "output": '{{"type": "order_quality_issue", "confidence": 0.55, "extracted_items": ["burger"]}}'
+        },
+        {
+            "complaint": "Not sure if my order is late or if I misread the estimated time",
+            "output": '{{"type": "order_delayed", "confidence": 0.35, "extracted_items": []}}'
         }
     ]
+
     messages=[("system",system_prompt)]
     for ex in examples:
         messages.append(("human",ex["complaint"]))
