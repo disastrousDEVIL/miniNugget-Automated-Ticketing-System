@@ -33,8 +33,9 @@ It classifies customer complaints, validates missing-item claims using receipt i
 
 - **Backend:** FastAPI  
 - **Database:** SQLite (via Peewee ORM)  
-- **AI Models:** OpenAI GPT (via LangChain)  
-- **Image Validation:** OCR + food item extraction  
+- **AI Models:** OpenAI GPT-4o (via LangChain)  
+- **Image Validation:** GPT-4o multimodal item detection  
+
 
 ---
 
@@ -43,13 +44,17 @@ It classifies customer complaints, validates missing-item claims using receipt i
 ```
 
 .
-├── classifier.py         # AI complaint classifier
-├── image\_extractor.py    # OCR + food item extractor
-├── main.py               # FastAPI app entrypoint
-├── models.py             # Database models
-├── schemas.py            # API schemas
-├── test\_classifier.py    # Simple test cases
-├── tickets.db            # SQLite database
+├── backend/
+│   ├── classifier.py        # AI complaint classifier
+│   ├── image_extractor.py   # GPT-4o-based image item detection
+│   ├── main.py              # FastAPI entrypoint
+│   ├── models.py            # Peewee ORM models
+│   ├── schemas.py           # Pydantic schemas
+│   ├── test_classifier.py   # Test script
+│   └── tickets.db           # SQLite database
+├── mermaid.png              # Architecture diagram
+├── requirements.txt         # Dependencies
+└── test_cases.txt           # Additional test examples
 
 ````
 
@@ -91,7 +96,6 @@ Swagger UI: [http://localhost:8000/docs](http://localhost:8000/docs)
 * `POST /submit-ticket` – Submit a new complaint
 * `GET /tickets` – Fetch all tickets
 * `GET /tickets/pending` – Fetch only pending tickets
-* `POST /tickets/{ticket_id}/update` – Update ticket status
 
 ---
 
